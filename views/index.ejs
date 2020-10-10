@@ -1,0 +1,33 @@
+<html>
+    <head><title>To Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    </head>
+    <body>
+        <div class="box" id="heading">
+        <h1 ><%= ejsTitle %></h1>
+        </div>
+
+        <div class="box">  
+            <%  ejsLists.forEach(function(item){ %>
+                <form action="/delete" method="post">
+                  <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+                    <p><%=item.name%></p>
+                  </div>
+                  <input type="hidden" name="listName" value="<%= ejsTitle %>"></input>
+                </form>
+              <%  }) %>
+
+        
+        <form class="item" action="/" method="post">
+            <input name="listItem" type="text"  placeholder="New Item" autocomplete="off">
+     <button type="submit" name="button" value="<%= ejsTitle %>">+</button>
+    </form>
+
+        </div>
+
+
+
+    </body>
+</html>
