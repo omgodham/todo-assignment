@@ -4,11 +4,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 mongoose
-  .connect(
-    "mongodb+srv://admin-omkar:oppoa37f@cluster0.usfdn.mongodb.net/toDOListDB",
-    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
-  )
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     console.log("MongoDB Connnected");
   })
